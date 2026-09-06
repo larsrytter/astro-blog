@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WebLinksRecent from '../components/WebLinksRecent.astro';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+const pageTitle = "Home Page";
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const latestPost = posts[0];
+
+const { Content } = await render(latestPost);
+---
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+
+  <WebLinksRecent />
+
+  <article>
+    <h2>Latest blog post</h2>
+    <h3>{latestPost.data.title}</h3>
+    <Content />
+  </article>
+
+</BaseLayout>

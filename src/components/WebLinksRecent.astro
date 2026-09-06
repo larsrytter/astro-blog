@@ -1,0 +1,19 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+const webLinks = (await getCollection('webLinks')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).map((entry: CollectionEntry<'webLinks'>) => entry.data);
+---
+
+<ul class="web-links">
+    {
+        webLinks.map((link: any) => (
+            <li>
+                <a href={link.url} target="_blank">
+                    {link.linktext}
+                </a>
+            </li>
+        ))
+    }
+</ul>

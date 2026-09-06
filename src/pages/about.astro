@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "About Me";
+const identity = {
+  firstName: "Lars",
+  country: "Denmark",
+  occupation: "Software Engineer",
+  hobbies: ["programming", "gaming", "hiking", "traveling", "reading", "learning new things"],
+};
+const skills = ["HTML", "CSS", "JavaScript", "Angular", "Dotnet", "Astro", "Software Architecture"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <style is:global define:vars={{skillColor, fontWeight, textCase}}>
+    h1 {
+        color: purple;
+        font-size: 4rem;
+    }
+    .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    }
+    </style>
+    
+    <h2>And who I am</h2>
+    <p>
+		My name is Lars Rytter Sørensen. <br />
+		I enjoy life living in Aarhus, Denmark.
+	</p>
+	<p>
+		In my professional life I work as a software developer, currently at WSP, building GIS software. 
+		Everything on this site is my personal content and opinions.
+		<br />
+		If you are interested in more about my background, feel free to check my <a href="https://www.linkedin.com/in/lars-rytter-s%C3%B8rensen-05594a1/" target="_blank">LinkedIn profile</a>.
+		<br />		
+	</p>
+	<p>
+		Here I will write about personal projects, technologies I come across and subjects I try to learn about. 
+		For my own reference and learning experience -- and whoever else may find it useful - maybe you will too 😊
+	</p>
+</BaseLayout>
